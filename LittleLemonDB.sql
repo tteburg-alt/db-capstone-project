@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `littlelemondb` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `littlelemondb`;
 -- MySQL dump 10.13  Distrib 8.0.45, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: littlelemondb
@@ -97,6 +95,91 @@ LOCK TABLES `menu` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `menuitems`
+--
+
+DROP TABLE IF EXISTS `menuitems`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `menuitems` (
+  `MenuItemID` int NOT NULL,
+  `CourseName` varchar(100) DEFAULT NULL,
+  `StarterName` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`MenuItemID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menuitems`
+--
+
+LOCK TABLES `menuitems` WRITE;
+/*!40000 ALTER TABLE `menuitems` DISABLE KEYS */;
+/*!40000 ALTER TABLE `menuitems` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orderdeliverystatus`
+--
+
+DROP TABLE IF EXISTS `orderdeliverystatus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orderdeliverystatus` (
+  `DeliveryID` int NOT NULL,
+  `OrderID` int NOT NULL,
+  `DeliveryDate` date DEFAULT NULL,
+  `DeliveryStatus` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`DeliveryID`),
+  KEY `OrderID_idx` (`OrderID`),
+  CONSTRAINT `OrderID` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orderdeliverystatus`
+--
+
+LOCK TABLES `orderdeliverystatus` WRITE;
+/*!40000 ALTER TABLE `orderdeliverystatus` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderdeliverystatus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orders` (
+  `OrderID` int NOT NULL,
+  `OrderDate` date DEFAULT NULL,
+  `Quantity` int DEFAULT NULL,
+  `TotalCost` decimal(10,0) DEFAULT NULL,
+  `CustomerID` int NOT NULL,
+  `StaffID` int NOT NULL,
+  `MenuID` int NOT NULL,
+  PRIMARY KEY (`OrderID`),
+  KEY `CustomerID_idx` (`CustomerID`),
+  KEY `StaffID_idx` (`StaffID`),
+  KEY `MenuID_idx` (`MenuID`),
+  CONSTRAINT `Customer_ID` FOREIGN KEY (`CustomerID`) REFERENCES `customers` (`CustomerID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Menu_ID` FOREIGN KEY (`MenuID`) REFERENCES `menu` (`MenuID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Staff_ID` FOREIGN KEY (`StaffID`) REFERENCES `staff` (`StaffID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `staff`
 --
 
@@ -130,4 +213,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-04-06  3:54:16
+-- Dump completed on 2026-04-10  4:29:15
