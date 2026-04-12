@@ -733,26 +733,6 @@
       </table>
       <simple-id uuid='{C395D5D4-40C0-4C77-B74E-ECCE46843BD2}' />
     </worksheet>
-    <worksheet name='Sheet 5'>
-      <table>
-        <view>
-          <datasources />
-          <aggregation value='true' />
-        </view>
-        <style />
-        <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-          </pane>
-        </panes>
-        <rows />
-        <cols />
-      </table>
-      <simple-id uuid='{94F8F2E0-985C-4879-A2E8-44303421E0C9}' />
-    </worksheet>
   </worksheets>
   <dashboards>
     <dashboard enable-sort-zone-taborder='true' name='Dashboard'>
@@ -929,29 +909,6 @@
         </edge>
       </cards>
       <simple-id uuid='{BA5AA1CE-C6D2-4029-B184-5740BDF13BAD}' />
-    </window>
-    <window class='worksheet' name='Sheet 5'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='31'>
-            <card type='title' />
-          </strip>
-        </edge>
-      </cards>
-      <simple-id uuid='{3D814ED7-ACA0-46A3-9497-0FED396D3C6E}' />
     </window>
     <window class='dashboard' maximized='true' name='Dashboard'>
       <viewpoints>
